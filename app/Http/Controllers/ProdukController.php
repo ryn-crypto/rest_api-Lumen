@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use app\Models\Produk;
+use App\Models\Produk;
 use Illuminate\Http\Request;
 
 class ProdukController extends Controller
@@ -20,21 +20,21 @@ class ProdukController extends Controller
             'harga'       => $harga 
         ]);
 
-        $this->responseHasil(200, True, $produk);
+        return $this->responseHasil(200, True, $produk);
     }
 
     // untuk function list
     public function list()
     {
         $produk = Produk::all();
-        $this->responseHasil(200, True, $produk);
+        return $this->responseHasil(200, True, $produk);
     }
 
     // untuk menampilkan produk
     public function show($id)
     {
         $produk = Produk::findOrFail($id);
-        $this->responseHasil(200, True, $produk);
+        return $this->responseHasil(200, True, $produk);
     }
 
     // untuk update pada produk
@@ -51,7 +51,7 @@ class ProdukController extends Controller
             'harga'       => $harga
         ]);
 
-        $this->responseHasil(200, True, $result);
+        return $this->responseHasil(200, True, $result);
     }
 
     // untuk menghpaus produk
@@ -60,8 +60,6 @@ class ProdukController extends Controller
         $produk = Produk::findOrFail($id);
         $delete = $produk->Delete();
 
-        $this->responseHasil(200, True, $delete);
+        return $this->responseHasil(200, True, $delete);
     }
-
-    
 }
