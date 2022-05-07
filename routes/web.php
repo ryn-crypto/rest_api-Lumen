@@ -22,3 +22,13 @@ $router->post('/registrasi',['uses' => 'RegistrasiController@registrasi']);
 
 // route untuk login 
 $router->post('/login',['uses' => 'LoginController@login']);
+
+// route untuk produk
+$router->group(['prefix' => 'produk'], function($router) {
+    $router->post('/', ['uses' => 'ProdukController@Create']);
+    $router->get('/', ['uses' => 'ProdukController@List']);
+    $router->get('/{id}', ['uses' => 'ProdukController@Show']);
+    $router->post('/{id}', ['uses' => 'ProdukController@Update']);
+    $router->delete('/{id}', ['uses' => 'ProdukController@Delete']);
+
+});
